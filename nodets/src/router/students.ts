@@ -3,8 +3,8 @@ import { getAllStudents, suspend, getOneStudent, updateStudent  } from "../contr
 import { isAuthenticated, isMonitor } from "../middlewares"
 import { get } from "lodash"
 export default (router: express.Router)=>{
-    router.get('/students',isAuthenticated, getAllStudents)
-    router.get('/students/:id',isAuthenticated, getOneStudent)
-    router.patch('/students/update/:id', isAuthenticated, isMonitor, updateStudent)
-    router.delete('/students/suspend/:id', isAuthenticated, isMonitor, suspend)
+    router.get('/students', getAllStudents)
+    router.get('/students/:id', getOneStudent)
+    router.patch('/students/update/:id',updateStudent)
+    router.delete('/students/suspend/:id',  suspend)
 }
