@@ -22,7 +22,10 @@ const isMonitor = async(req:express.Request, res: express.Response ,next: expres
 const isAuthenticated = async (req: express.Request, res: express.Response, next: express.NextFunction)=> {
     try {
 
-        const sessionToken = req.cookies['sessionToken']
+        const authHeader = req.headers['authorization'];
+        const sessionToken = authHeader ? authHeader.split(' ')[1] : null;
+
+        // const sessionToken = req.cookies['sessionToken']
         if (!sessionToken) {
             return res.sendStatus(400)
         }

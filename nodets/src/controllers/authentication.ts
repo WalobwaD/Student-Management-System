@@ -23,7 +23,8 @@ const login = async (req: express.Request, res:express.Response)=>{
     existingStudent.authentication.sessionToken = authentication(salt, existingStudent._id.toString())
     await existingStudent.save()
 
-    res.cookie('sessionToken', existingStudent.authentication.sessionToken, {domain:'localhost', path: '/' })
+    res.set('Authorization', `Bearer ${existingStudent.authentication.sessionToken}`);
+    // res.cookie('sessionToken', existingStudent.authentication.sessionToken, {domain:'localhost', path: '/' })
     return res.status(200).json({status: 'success', existingStudent}).end()
 }
 
