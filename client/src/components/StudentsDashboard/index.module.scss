@@ -1,0 +1,14 @@
+.container {
+    display: flex;
+    flex-direction: column;
+
+    .addStudent {
+        align-self: flex-end;
+        margin: 10px 80px 0 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        text-decoration: none;
+    }
+}

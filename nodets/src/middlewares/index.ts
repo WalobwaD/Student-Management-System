@@ -1,27 +1,23 @@
 import express from "express"
-import { getUserBySessionToken } from "../db/users"
+import { getStudentBySessionToken, getStudentId } from "../db/students"
 import {get, merge} from "lodash"
 
-const isOwner = async(req:express.Request, res: express.Response ,next: express.NextFunction)=>{
-    try{
 
-        const { id } = req.params
+const isMonitor = async(req:express.Request, res: express.Response ,next: express.NextFunction)=>{
 
-        const currentUserId = get(req, 'identity._id') as string
-        
-        if(!currentUserId){
+    try {
+        const checkMonitor = get(req, 'identity.monitor') as boolean
+        if (checkMonitor){
+            next()
+        } else {
             return res.sendStatus(403)
         }
-        if (currentUserId.toString() !== id) {
-            return res.sendStatus(403)
-        }
-
-        next()
     } catch(error) {
         console.log(error)
         return res.sendStatus(500)
     }
 }
+
 
 const isAuthenticated = async (req: express.Request, res: express.Response, next: express.NextFunction)=> {
     try {
@@ -31,12 +27,12 @@ const isAuthenticated = async (req: express.Request, res: express.Response, next
             return res.sendStatus(400)
         }
 
-        const existingUser = await getUserBySessionToken(sessionToken)
-        if (!existingUser) {
+        const existingStudent = await getStudentBySessionToken(sessionToken)
+        if (!existingStudent) {
             return res.sendStatus(400)
         }
 
-        merge(req, {identity: existingUser})
+        merge(req, {identity: existingStudent})
 
         return next()
     } catch(error) {
@@ -47,5 +43,5 @@ const isAuthenticated = async (req: express.Request, res: express.Response, next
 
 export {
     isAuthenticated,
-    isOwner
+    isMonitor
 }

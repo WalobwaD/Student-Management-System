@@ -1,4 +1,4 @@
-import { getUserByEmail, createUser } from '../db/users'
+import { getStudentByEmail, createStudent } from '../db/students'
 import express, { response } from 'express'
 import { random, authentication } from "../helpers"
 
@@ -8,48 +8,52 @@ const login = async (req: express.Request, res:express.Response)=>{
         return res.sendStatus(400)
     }
 
-    const existingUser = await getUserByEmail(email).select('+authentication.salt +authentication.password')
+    const existingStudent = await getStudentByEmail(email).select('+authentication.salt +authentication.password')
 
-    if (!existingUser) {
+    if (!existingStudent) {
         return res.sendStatus(400)
     } 
-    const existHash = authentication(existingUser.authentication.salt, password)
+    const existHash = authentication(existingStudent.authentication.salt, password)
 
-    if (existingUser.authentication.password !== existHash) {
+    if (existingStudent.authentication.password !== existHash) {
         return res.sendStatus(403)
     }
 
     const salt = random()
-    existingUser.authentication.sessionToken = authentication(salt, existingUser._id.toString())
-    await existingUser.save()
+    existingStudent.authentication.sessionToken = authentication(salt, existingStudent._id.toString())
+    await existingStudent.save()
 
-    res.cookie('sessionToken', existingUser.authentication.sessionToken, {domain:'localhost', path: '/' })
-    return res.status(200).json({status: 'success', existingUser}).end()
+    res.cookie('sessionToken', existingStudent.authentication.sessionToken, {domain:'localhost', path: '/' })
+    return res.status(200).json({status: 'success', existingStudent}).end()
 }
 
 const register = async (req: express.Request, res: express.Response)=>{
     try {
-        const {name, email, password} = req.body
+        const {name,lastName, email, password, description, level, monitor} = req.body
 
         if (!email || !password || !name) {
             return res.sendStatus(400)
         }
-        const existingUser = await getUserByEmail(email)
-        if (existingUser) {
+        const existingStudent = await getStudentByEmail(email)
+        if (existingStudent) {
             return res.sendStatus(400)
         } 
 
         const salt = random()
-        const user = await createUser({
+        const student = await createStudent({
             name, 
+            lastName,
             email,
+            description,
+            level,
+            monitor,
             authentication: {
                 salt,
                 password: authentication(salt, password),
             }
         })
 
-        return res.json({status: 'success', user}).end()
+        return res.json({status: 'success', student}).end()
     } catch (error) {
         console.log(error)
         return res.sendStatus(400)

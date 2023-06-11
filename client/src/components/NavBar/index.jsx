@@ -5,6 +5,7 @@ import { useContext } from "react";
 import { UserContext } from "../../context/AuthenticationContext/userContext";
 import Logo from "../../assets/teacher.png"
 
+
 const NavBar = ()=>{
     const {username, email} = useContext(UserContext)
     return (
