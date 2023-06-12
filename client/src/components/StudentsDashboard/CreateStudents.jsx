@@ -50,7 +50,7 @@ const CreateStudents = ()=>{
       const data = await response.json()
       if (data.status === 'success') {
           console.log('success')
-          window.location.href = '/students'
+          window.location.href = '/'
       } else{
           console.log('invalid email')
       }
