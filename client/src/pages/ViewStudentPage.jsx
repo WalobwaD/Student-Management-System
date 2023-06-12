@@ -1,7 +1,11 @@
+import NavBar from "../components/NavBar"
 import StudentProfile from "../components/StudentsDashboard/StudentProfile"
 const ViewStudentPage = ()=>{
     return (
-        <StudentProfile />
+        <>  
+            <NavBar/>
+            <StudentProfile />
+        </>
     )
 }
 

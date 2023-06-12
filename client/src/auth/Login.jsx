@@ -106,8 +106,8 @@ export default function Log() {
             </Button>
             <Grid container>
               <Grid item xs>
-                <Link href="#" variant="body2">
-                  Forgot password?
+                <Link to="/" variant="body2">
+                  Home
                 </Link>
               </Grid>
               <Grid item>
