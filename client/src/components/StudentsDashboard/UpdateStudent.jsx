@@ -76,7 +76,7 @@ const UpdateStudent = ()=>{
             <GroupIcon />
           </Avatar>
           <Typography component="h1" variant="h5">
-            Add a new student
+            Update {name} {lastName}'s profile
           </Typography>
           <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
             <Grid container spacing={2}>
@@ -85,6 +85,7 @@ const UpdateStudent = ()=>{
                   color = 'secondary'
                   autoComplete="given-name"
                   name="name"
+                  value={name}
                   sx={{
                     '& .MuiOutlinedInput-root': { '& fieldset': { borderColor: '#7760A4' } },
                   }}
