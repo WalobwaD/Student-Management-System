@@ -39,7 +39,11 @@ export default function SignUp() {
         name,
         email,
         lastName,
-        password
+        password,
+        monitor: false,
+        description: '',
+        level: 0
+
       })
     })
     const data = await response.json()

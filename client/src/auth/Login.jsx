@@ -45,6 +45,7 @@ export default function Log() {
 
             localStorage.setItem('email', data.existingStudent.email)
             localStorage.setItem('name', data.existingStudent.name)
+            localStorage.setItem('isMonitor', data.existingStudent.monitor)
             localStorage.setItem('token', data.existingStudent.authentication.sessionToken)
 
             window.location.href = '/'
