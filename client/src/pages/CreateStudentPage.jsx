@@ -4,19 +4,26 @@ import CreateStudent from "../components/StudentsDashboard/CreateStudents"
 import Footer from "../components/Footer"
 
 //react imports
-import { useContext } from "react"
+import { useContext, useEffect } from "react"
 import { UserContext } from "../context/AuthenticationContext/userContext"
 
 //router imports
 import { useNavigate } from "react-router-dom"
 
 const CreatePage = ()=>{
-    const {email} = useContext(UserContext)
     const navigate = useNavigate()
+
+    const {email} = useContext(UserContext)
+
+    useEffect(()=>{
+        if(!email){
+            navigate("/login")
+        }
+    }, [])
     return (
         <>
             <NavBar/>
-            {email? <CreateStudent/> : navigate('/login')}
+            <CreateStudent/>
             <Footer/>
         </>
     )

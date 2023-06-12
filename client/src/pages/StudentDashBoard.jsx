@@ -1,22 +1,27 @@
 import NavBar from "../components/NavBar";
 import StudentsList from "../components/StudentsDashboard";
-import { useContext } from "react";
+
+import { useContext, useEffect } from "react";
 import { UserContext } from "../context/AuthenticationContext/userContext";
-import Footer from "../components/Footer";
+import { Navigate } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-
-
 const StudentDashBoard = ()=>{
     const navigate = useNavigate()
     const {email} = useContext(UserContext)
+    useEffect(()=>{
+        if(!email){
+            navigate("/login")
+        }
+
+    },[])
     return (
         <>
+
             <NavBar/>
-            {email ? <StudentsList/> : navigate("/login") }            
+            <StudentsList/>
         </>
-
-
     )
+
 }
 
 export default StudentDashBoard;
