@@ -10,8 +10,10 @@ import router from "./router";
 
 const app = express();
 
+const allowedOrigins = ['http://localhost:5173', 'https://student-management-system-xi.vercel.app']
+
 app.use(cors({
-    origin:'https://student-management-system-xi.vercel.app',
+    origin:allowedOrigins,
     credentials: true,
 
 }))
