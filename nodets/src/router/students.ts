@@ -9,7 +9,7 @@ export default (router: express.Router)=>{
     })
     router.get('/students', isAuthenticated, getAllStudents)
     router.get('/students/:id', isAuthenticated, getOneStudent)
-    router.patch('/students/update/:id',isAuthenticated, isMonitor,updateStudent)
+    router.patch('/students/update/:id',isAuthenticated,updateStudent)
     router.delete('/students/suspend/:id',isAuthenticated, isMonitor,  suspend)
 }
 

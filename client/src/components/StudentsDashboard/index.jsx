@@ -1,19 +1,21 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import style from "./index.module.scss"
 import Album from "./Students";
 import { Box } from "@mui/material";
 import {Link} from "react-router-dom"
+import { UserContext } from "../../context/AuthenticationContext/userContext";
 
 const StudentsList = ()=>{
     const [students, setStudents] = useState([])
+    const {token} = useContext(UserContext)
 
     const fetchData = async ()=>{
-        const response = await fetch('http://localhost:8080/users', {
+        const response = await fetch('https://student-management-system-1rxu.onrender.com/students', {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json; charset=utf-8',
+                Authorization : `Bearer ${token}`
             },
-            credentials: 'include',
         })
         const data = await response.json()
         setStudents(data)
@@ -37,6 +39,13 @@ const StudentsList = ()=>{
                     height: '2.5rem',
                     border: 'none',
                     borderRadius: '3px',
+                    transition: 'all 0.3s ease-in-out',
+                    padding: '0.5rem',
+                    fontSize: '0.8rem',
+
+                    '&:hover': {
+                        backgroundColor: '#7B1FA2',
+                    }
 
                 }}
             > Add Student +</Box>

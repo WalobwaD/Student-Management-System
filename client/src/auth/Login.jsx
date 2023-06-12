@@ -27,7 +27,7 @@ export default function Log() {
 
     const handleSubmit = async (e)=>{
         e.preventDefault()
-        const response = await fetch('http://localhost:8080/auth/login', 
+        const response = await fetch('https://student-management-system-1rxu.onrender.com/auth/login', 
         {
             method: 'POST',
             headers: {
@@ -42,10 +42,10 @@ export default function Log() {
         )
         const data = await response.json()
         if (data.status === 'success') {
-            console.log(data)
 
-            localStorage.setItem('email', data.existingUser.email)
-            localStorage.setItem('name', data.existingUser.name)
+            localStorage.setItem('email', data.existingStudent.email)
+            localStorage.setItem('name', data.existingStudent.name)
+            localStorage.setItem('token', data.existingStudent.authentication.sessionToken)
 
             window.location.href = '/'
         }else {
@@ -69,7 +69,7 @@ export default function Log() {
             <LockOutlinedIcon />
           </Avatar>
           <Typography component="h1" variant="h5">
-            Sign in
+            Sign In To DashBoard
           </Typography>
           <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
             <TextField
@@ -82,6 +82,7 @@ export default function Log() {
               onChange={(e)=>setEmail(e.target.value)}
               autoComplete="email"
               autoFocus
+              color="secondary"
             />
             <TextField
               margin="normal"
@@ -93,16 +94,13 @@ export default function Log() {
               id="password"
               onChange={(e)=>setPassword(e.target.value)}
               autoComplete="current-password"
-            />
-            <FormControlLabel
-              control={<Checkbox value="remember" color="primary" />}
-              label="Remember me"
+              color="secondary"
             />
             <Button
               type="submit"
               fullWidth
               variant="contained"
-              sx={{ mt: 3, mb: 2 }}
+              sx={{ mt: 3, mb: 2, backgroundColor: '#55388D' }}
             >
               Sign In
             </Button>

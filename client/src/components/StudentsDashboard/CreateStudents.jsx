@@ -32,7 +32,7 @@ const CreateStudents = ()=>{
 
   const handleSubmit = async (e)=>{
       e.preventDefault()
-      const response = await fetch('http://localhost:8080/auth/register', {
+      const response = await fetch('https://student-management-system-1rxu.onrender.com/auth/register', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -77,6 +77,7 @@ const CreateStudents = ()=>{
             <Grid container spacing={2}>
               <Grid item xs={12} sm={6}>
                 <TextField
+                  color = 'secondary'
                   autoComplete="given-name"
                   name="name"
                   sx={{
@@ -92,6 +93,7 @@ const CreateStudents = ()=>{
               </Grid>
               <Grid item xs={12} sm={6}>
                 <TextField
+                  color = 'secondary'
                   fullWidth
                   sx={{
                     '& .MuiOutlinedInput-root': { '& fieldset': { borderColor: '#7760A4' } },
@@ -105,6 +107,7 @@ const CreateStudents = ()=>{
               </Grid>
               <Grid item xs={12}>
                 <TextField
+                  color = 'secondary'
                   required
                   sx={{
                     '& .MuiOutlinedInput-root': { '& fieldset': { borderColor: '#7760A4' } },
@@ -119,6 +122,7 @@ const CreateStudents = ()=>{
               </Grid>
               <Grid item xs={12}>
                 <TextField
+                  color = 'secondary'
                   fullWidth
                   sx={{
                     '& .MuiOutlinedInput-root': { '& fieldset': { borderColor: '#7760A4' } },
@@ -132,6 +136,7 @@ const CreateStudents = ()=>{
               </Grid>
               <Grid item xs={12}>
                 <TextField
+                  color = 'secondary'
                   fullWidth
                   sx={{
                     '& .MuiOutlinedInput-root': { '& fieldset': { borderColor: '#7760A4' } },
@@ -146,6 +151,7 @@ const CreateStudents = ()=>{
               </Grid>
               <Grid item xs={12}>
                 <TextField
+                  color='secondary'
                   required
                   fullWidth
                   sx={{
@@ -162,6 +168,7 @@ const CreateStudents = ()=>{
             </Grid>
             <Button
               type="submit"
+              color='secondary'
               fullWidth
               variant="contained"
               sx={{ mt: 3, mb: 2 }}

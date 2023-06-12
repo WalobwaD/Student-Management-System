@@ -18,14 +18,13 @@ const NavBar = ()=>{
                     </div>
                     <div className={styles.navLinks}>
                         <Link to="/">Home</Link>
-                        <Link to="/students' DashBoard">Students' DashBoard</Link>
+                        <Link to="/students' DashBoard">Class DashBoard</Link>
                     </div>
                     <div className={styles.user}>
                         <div className={styles.icon}>
                             <i className="fa-solid fa-user"></i>
                             <span>{username}</span>
                         </div>
-
                         <Logout/>
                     </div>
                 </nav>

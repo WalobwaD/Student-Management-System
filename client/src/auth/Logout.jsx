@@ -1,5 +1,5 @@
 import styles from "./logout.module.scss"
-
+import { Button } from "@mui/material"
 const Logout = ()=>{
     const handleLogout = ()=>{
         localStorage.removeItem("email")
@@ -9,11 +9,12 @@ const Logout = ()=>{
         window.location.href = "/"
     }
     return(
-        <button 
-            className={styles.logoutBtn}
+        <Button 
+            color="secondary"
+            variant="contained"
             onClick={handleLogout}>
             Logout
-        </button>
+        </Button>
     )
 }
 

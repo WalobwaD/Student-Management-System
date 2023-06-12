@@ -7,25 +7,31 @@ import CssBaseline from '@mui/material/CssBaseline';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
+import {Link} from "react-router-dom"
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 import StudentImage from "../../assets/students.png"
+import { UserContext } from '../../context/AuthenticationContext/userContext';
+import { useContext } from 'react';
 
 
 const defaultTheme = createTheme();
 
 export default function Album({students}) {
+  const {token} = useContext(UserContext)
 
 
   const deleteData = async(id)=>{
-      const response = await fetch(`http://localhost:8080/users/${id}`, {
+      const response = await fetch(`https://student-management-system-1rxu.onrender.com/students/suspend/${id}`, {
           method: 'DELETE',
           headers: {
               'Content-Type': 'application/json; charset=utf-8',
+              Authorization: `Bearer ${token}`
           },
 
       })
+      const data = await response.json()
       window.location.href = '/students\' DashBoard'
   }
 
@@ -50,8 +56,10 @@ export default function Album({students}) {
               color="text.primary"
               gutterBottom
             >
-              Silabu's Students
+              Silabu's Students<br/>
+              <Typography component='p'>{students.length} Active</Typography>
             </Typography>
+            
             <Typography variant="h5" align="center" color="text.secondary" paragraph>
                 Make every mind curious
             </Typography>
@@ -61,7 +69,7 @@ export default function Album({students}) {
           {/* End hero unit */}
           <Grid container spacing={4}>
             {students.map((student) => (
-              <Grid item key={student.id} xs={12} sm={6} md={4}>
+              <Grid item key={student._id} xs={12} sm={6} md={4}>
                 <Card
                   sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}
                 >
@@ -82,9 +90,14 @@ export default function Album({students}) {
                     </Typography>
                   </CardContent>
                   <CardActions>
-                    <Button sx={{color: '#7760A4'}} size="small">View</Button>
+                    <Button
+                       sx={{color: '#7760A4',}} 
+                       size="small"
+                    >
+                      <Link to={`/viewStudent/${student._id}`} style={{textDecoration: 'none'}} state={student} >View</Link>
+                    </Button>
                     <Button sx={{color: '#7760A4'}} size="small">Update</Button>
-                    <Button onClick={(e)=>deleteData(student._id)} sx={{color: '#7760A4'}} size="small">Delete</Button>
+                    <Button onClick={()=>deleteData(student._id)} sx={{color: '#7760A4'}} size="small">Delete</Button>
                     
                   </CardActions>
                 </Card>

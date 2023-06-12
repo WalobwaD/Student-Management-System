@@ -30,7 +30,7 @@ export default function SignUp() {
 
   const handleSubmit = async (e)=>{
     e.preventDefault()
-    const response = await fetch('http://localhost:8080/auth/register', {
+    const response = await fetch('https://student-management-system-1rxu.onrender.com/auth/register', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -68,7 +68,7 @@ export default function SignUp() {
             <LockOutlinedIcon />
           </Avatar>
           <Typography component="h1" variant="h5">
-            Sign up
+            Register a student's Account.
           </Typography>
           <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
             <Grid container spacing={2}>
@@ -78,6 +78,7 @@ export default function SignUp() {
                   name="firstName"
                   required
                   fullWidth
+                  color='secondary'
                   onChange={(e)=>setName(e.target.value)}
                   id="firstName"
                   label="First Name"
@@ -88,6 +89,7 @@ export default function SignUp() {
                 <TextField
                   required
                   fullWidth
+                  color='secondary'
                   id="lastName"
                   label="Last Name"
                   name="lastName"
@@ -99,6 +101,7 @@ export default function SignUp() {
                 <TextField
                   required
                   fullWidth
+                  color='secondary'
                   id="email"
                   onChange={(e)=>setEmail(e.target.value)}
                   label="Email Address"
@@ -110,6 +113,7 @@ export default function SignUp() {
                 <TextField
                   required
                   fullWidth
+                  color='secondary'
                   onChange={(e)=>setPassword(e.target.value)}
                   name="password"
                   label="Password"
@@ -118,18 +122,12 @@ export default function SignUp() {
                   autoComplete="new-password"
                 />
               </Grid>
-              <Grid item xs={12}>
-                <FormControlLabel
-                  control={<Checkbox value="allowExtraEmails" color="primary" />}
-                  label="I want to receive inspiration, marketing promotions and updates via email."
-                />
-              </Grid>
             </Grid>
             <Button
               type="submit"
               fullWidth
               variant="contained"
-              sx={{ mt: 3, mb: 2 }}
+              sx={{ mt: 3, mb: 2, backgroundColor: '#55388D' }}
             >
               Sign Up
             </Button>
