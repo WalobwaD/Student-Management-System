@@ -53,10 +53,9 @@ const UpdateStudent = ()=>{
         })
       })
       const data = await response.json()
-      console.log(data)
       if (data.status === 'success') {
           console.log('success')
-          window.location.href = '/students'
+          window.location.href = '/'
       } else{
           console.log('invalid email')
       }
