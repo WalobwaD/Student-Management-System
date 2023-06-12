@@ -45,7 +45,7 @@ export default function SignUp() {
     const data = await response.json()
     if (data.status === 'success') {
         console.log('success')
-        window.location.href = '/login'
+        window.location.href = '/'
     } else{
         console.log('invalid email')
     }
