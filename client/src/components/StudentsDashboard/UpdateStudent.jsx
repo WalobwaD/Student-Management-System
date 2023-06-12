@@ -100,6 +100,7 @@ const UpdateStudent = ()=>{
               <Grid item xs={12} sm={6}>
                 <TextField
                   color = 'secondary'
+                  value={lastName}
                   fullWidth
                   sx={{
                     '& .MuiOutlinedInput-root': { '& fieldset': { borderColor: '#7760A4' } },
@@ -115,6 +116,7 @@ const UpdateStudent = ()=>{
                 <TextField
                   color = 'secondary'
                   required
+                  value={email}
                   sx={{
                     '& .MuiOutlinedInput-root': { '& fieldset': { borderColor: '#7760A4' } },
                   }}
@@ -130,12 +132,13 @@ const UpdateStudent = ()=>{
                 <TextField
                   color = 'secondary'
                   fullWidth
+                  value={description}
                   sx={{
                     '& .MuiOutlinedInput-root': { '& fieldset': { borderColor: '#7760A4' } },
                   }}
                   id="description"
                   label="Descriprtion"
-                  name="email"
+                  name="description"
                   onChange={(e)=>setDescription(e.target.value)}
                   autoComplete="email"
                 />
@@ -150,6 +153,7 @@ const UpdateStudent = ()=>{
                   id="level"
                   label="level"
                   name="level"
+                  value={level}
                   type='number'
                   onChange={(e)=>setLevel(e.target.value)}
                   autoComplete="email"
@@ -165,6 +169,7 @@ const UpdateStudent = ()=>{
                   }}
                   name="password"
                   label="Password"
+                  value={password}
                   type="password"
                   id="password"
                   onChange={(e)=>setPassword(e.target.value)}
