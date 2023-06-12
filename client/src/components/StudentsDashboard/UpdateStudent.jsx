@@ -11,7 +11,8 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
-import { useState } from 'react';
+import { useContext, useState } from 'react';
+import { UserContext } from '../../context/AuthenticationContext/userContext';
 
 
 // TODO remove, this demo shouldn't need to reset the theme.
@@ -21,21 +22,23 @@ const defaultTheme = createTheme();
 
 
 
-const CreateStudents = ()=>{
-  const [name, setName] = useState('')
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
-  const [monitor, setMonitor] = useState(false)
-  const [lastName, setlastName] = useState('')
-  const [description, setDescription] = useState('')
-  const [level, setLevel] = useState(0)
+const UpdateStudent = ()=>{
+    const {token} = useContext(UserContext)
+    const [name, setName] = useState('')
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
+    const [monitor, setMonitor] = useState(false)
+    const [lastName, setlastName] = useState('')
+    const [description, setDescription] = useState('')
+    const [level, setLevel] = useState(0)
 
-  const handleSubmit = async (e)=>{
+  const handleSubmit = async (e, id)=>{
       e.preventDefault()
-      const response = await fetch('https://student-management-system-1rxu.onrender.com/auth/register', {
-        method: 'POST',
+      const response = await fetch(`https://student-management-system-1rxu.onrender.com/students/update/${id}`, {
+        method: 'PUT',
         headers: {
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`
         },
         body: JSON.stringify({
           name,
@@ -183,4 +186,4 @@ const CreateStudents = ()=>{
 }
 
 
-export default CreateStudents;
+export default UpdateStudent

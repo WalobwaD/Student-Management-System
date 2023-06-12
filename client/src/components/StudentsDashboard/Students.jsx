@@ -96,7 +96,9 @@ export default function Album({students}) {
                     >
                       <Link to={`/viewStudent/${student._id}`} style={{textDecoration: 'none'}} state={student} >View</Link>
                     </Button>
-                    <Button sx={{color: '#7760A4'}} size="small">Update</Button>
+                    <Button sx={{color: '#7760A4'}} size="small">
+                      <Link to={`/updateStudent/${student._id}`} style={{textDecoration: 'none'}} state={student}>Update</Link>
+                      </Button>
                     <Button onClick={()=>deleteData(student._id)} sx={{color: '#7760A4'}} size="small">Delete</Button>
                     
                   </CardActions>

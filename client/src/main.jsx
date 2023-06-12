@@ -1,14 +1,26 @@
+//react imports
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import './index.css'
+
+//react-router imports
 import {createBrowserRouter, RouterProvider} from "react-router-dom"
+
+//local imports
 import Home from './pages/Home.jsx'
 import LoginPage from './pages/LoginPage.jsx'
 import RegisterPage from './pages/RegisterPage'
 import StudentDashBoard from './pages/StudentDashBoard'
-import { UserProvider } from './context/AuthenticationContext/userContext'
-import CreateStudentPage from './pages/CreateStudentPage'
 import ViewStudentPage from "./pages/ViewStudentPage"
+import UpdatePage from "./pages/UpdatePage"
+import CreateStudentPage from './pages/CreateStudentPage'
+
+//context imports
+import { UserProvider } from './context/AuthenticationContext/userContext'
+
+//styles
+import './index.css'
+
+
 const router = createBrowserRouter([
   {
     path: '/',
@@ -33,6 +45,10 @@ const router = createBrowserRouter([
   {
     path: '/viewStudent/:id',
     element: <ViewStudentPage/>
+  },
+  {
+    path: '/updateStudent/:id',
+    element: <UpdatePage/>
   }
 ])
 ReactDOM.createRoot(document.getElementById('root')).render(
