@@ -13,6 +13,7 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 import { useContext, useState } from 'react';
 import { UserContext } from '../../context/AuthenticationContext/userContext';
+import { useLocation } from 'react-router-dom';
 
 
 // TODO remove, this demo shouldn't need to reset the theme.
@@ -31,6 +32,7 @@ const UpdateStudent = ()=>{
     const [lastName, setlastName] = useState('')
     const [description, setDescription] = useState('')
     const [level, setLevel] = useState(0)
+    const student= useLocation().state
 
   const handleSubmit = async (e, id)=>{
       e.preventDefault()
@@ -89,6 +91,7 @@ const UpdateStudent = ()=>{
                   required
                   fullWidth
                   id="name"
+                  value={student.name}
                   label="First Name"
                   onChange={(e)=>setName(e.target.value)}
                   autoFocus
@@ -103,6 +106,7 @@ const UpdateStudent = ()=>{
                   }}
                   id="lastName"
                   label="Last Name"
+                  value={student.lastName}
                   name="lastName"
                   onChange={(e)=>setlastName(e.target.value)}
                   autoComplete="family-name"
@@ -116,6 +120,7 @@ const UpdateStudent = ()=>{
                     '& .MuiOutlinedInput-root': { '& fieldset': { borderColor: '#7760A4' } },
                   }}
                   fullWidth
+                  value={student.email}
                   id="email"
                   label="Email Address"
                   name="email"
@@ -130,6 +135,7 @@ const UpdateStudent = ()=>{
                   sx={{
                     '& .MuiOutlinedInput-root': { '& fieldset': { borderColor: '#7760A4' } },
                   }}
+                  value={student.description}
                   id="description"
                   label="Descriprtion"
                   name="email"
@@ -145,6 +151,7 @@ const UpdateStudent = ()=>{
                     '& .MuiOutlinedInput-root': { '& fieldset': { borderColor: '#7760A4' } },
                   }}
                   id="level"
+                  value={student.level}
                   label="level"
                   name="level"
                   type='number'
