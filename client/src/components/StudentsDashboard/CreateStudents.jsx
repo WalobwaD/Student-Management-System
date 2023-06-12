@@ -11,6 +11,9 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
+import Select from '@mui/material/Select';
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
 import { useState } from 'react';
 
 
@@ -25,10 +28,18 @@ const CreateStudents = ()=>{
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
-  const [monitor, setMonitor] = useState(false)
+  const [monitor, setMonitor] = useState()
   const [lastName, setlastName] = useState('')
   const [description, setDescription] = useState('')
   const [level, setLevel] = useState(0)
+
+  const handleSelect = (e)=>{
+    if (e.target.value === 'monitor') {
+      setMonitor(true)
+    } else{
+      setMonitor(false)
+    }
+  }
 
   const handleSubmit = async (e)=>{
       e.preventDefault()
@@ -134,6 +145,19 @@ const CreateStudents = ()=>{
                   onChange={(e)=>setDescription(e.target.value)}
                   autoComplete="email"
                 />
+              </Grid>
+              <Grid item xs={12}>
+                <TextField
+                    color = 'secondary'
+                    fullWidth
+                    sx={{
+                      '& .MuiOutlinedInput-root': { '& fieldset': { borderColor: '#7760A4' } },
+                    }}
+                    id="monitor"
+                    label="Role: Monitor or Student"
+                    name="monitor"
+                    onChange={handleSelect}
+                  />
               </Grid>
               <Grid item xs={12}>
                 <TextField

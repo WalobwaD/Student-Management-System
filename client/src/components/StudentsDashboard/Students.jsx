@@ -19,7 +19,7 @@ import { useContext } from 'react';
 const defaultTheme = createTheme();
 
 export default function Album({students}) {
-  const {token} = useContext(UserContext)
+  const {token, isMonitor} = useContext(UserContext)
 
 
   const deleteData = async(id)=>{
@@ -96,10 +96,14 @@ export default function Album({students}) {
                     >
                       <Link to={`/viewStudent/${student._id}`} style={{textDecoration: 'none'}} state={student} >View</Link>
                     </Button>
-                    <Button sx={{color: '#7760A4'}} size="small">
-                      <Link to={`/updateStudent/${student._id}`} style={{textDecoration: 'none'}} state={student}>Update</Link>
-                      </Button>
-                    <Button onClick={()=>deleteData(student._id)} sx={{color: '#7760A4'}} size="small">Delete</Button>
+                    {isMonitor &&
+                                        <Button sx={{color: '#7760A4'}} size="small">
+                                        <Link to={`/updateStudent/${student._id}`} style={{textDecoration: 'none'}} state={student}>Update</Link>
+                                        </Button>
+                    }
+
+                      {isMonitor &&  <Button onClick={()=>deleteData(student._id)} sx={{color: '#7760A4'}} size="small">Delete</Button>}
+                   
                     
                   </CardActions>
                 </Card>

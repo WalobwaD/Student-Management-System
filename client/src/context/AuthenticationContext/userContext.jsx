@@ -16,7 +16,7 @@ export const UserProvider = ({children})=>{
     }, [])
 
     return (
-        <UserContext.Provider value= {{username, email, token}}>
+        <UserContext.Provider value= {{username, email, token, isMonitor}}>
             {children}
         </UserContext.Provider>
     )
