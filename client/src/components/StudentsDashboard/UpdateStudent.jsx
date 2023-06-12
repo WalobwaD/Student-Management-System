@@ -37,7 +37,7 @@ const UpdateStudent = ()=>{
   const handleSubmit = async (e, id)=>{
       e.preventDefault()
       const response = await fetch(`https://student-management-system-1rxu.onrender.com/students/update/${id}`, {
-        method: 'PUT',
+        method: 'PATCH',
         headers: {
           'Content-Type': 'application/json',
           'Authorization': `Bearer ${token}`
