@@ -29,10 +29,19 @@ const UpdateStudent = ()=>{
     const [name, setName] = useState(student.name)
     const [email, setEmail] = useState(student.email)
     const [password, setPassword] = useState(student.password)
-    const [monitor, setMonitor] = useState(false)
+    const [monitor, setMonitor] = useState(student.monitor)
     const [lastName, setlastName] = useState(student.lastName)
     const [description, setDescription] = useState(student.description)
     const [level, setLevel] = useState(student.level)
+
+    const handleSelect = (e)=>{
+        if (e.target.value === 'monitor') {
+          setMonitor(true)
+        } else{
+          setMonitor(false)
+        }
+      }
+    
 
   const handleSubmit = async (e)=>{
       e.preventDefault()
@@ -142,6 +151,20 @@ const UpdateStudent = ()=>{
                   onChange={(e)=>setDescription(e.target.value)}
                   autoComplete="email"
                 />
+              </Grid>
+              <Grid item xs={12}>
+                <TextField
+                    color = 'secondary'
+                    fullWidth
+                    sx={{
+                      '& .MuiOutlinedInput-root': { '& fieldset': { borderColor: '#7760A4' } },
+                    }}
+                    id="monitor"
+                    label="Role: Monitor or Student"
+                    value={monitor ? 'monitor' : 'student'}
+                    name="monitor"
+                    onChange={handleSelect}
+                  />
               </Grid>
               <Grid item xs={12}>
                 <TextField

@@ -5,6 +5,7 @@ const Logout = ()=>{
         localStorage.removeItem("email")
         localStorage.removeItem("name")
         localStorage.removeItem("token")
+        localStorage.removeItem("isMonitor")
 
         window.location.href = "/"
     }

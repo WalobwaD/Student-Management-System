@@ -35,6 +35,7 @@ export default function Album({students}) {
       window.location.href = '/'
   }
 
+  console.log(isMonitor)
 
   return (
     <ThemeProvider theme={defaultTheme}>
@@ -96,13 +97,17 @@ export default function Album({students}) {
                     >
                       <Link to={`/viewStudent/${student._id}`} style={{textDecoration: 'none'}} state={student} >View</Link>
                     </Button>
-                    {isMonitor &&
-                                        <Button sx={{color: '#7760A4'}} size="small">
-                                        <Link to={`/updateStudent/${student._id}`} style={{textDecoration: 'none'}} state={student}>Update</Link>
-                                        </Button>
+                    {isMonitor === 'true' &&
+                        <>
+                        <Button sx={{color: '#7760A4'}} size="small">
+                          <Link to={`/updateStudent/${student._id}`} style={{textDecoration: 'none'}} state={student}>Update</Link>
+                        </Button>
+                        <Button onClick={()=>deleteData(student._id)} sx={{color: '#7760A4'}} size="small">Delete</Button>
+                        </>
+
+
                     }
 
-                      {isMonitor &&  <Button onClick={()=>deleteData(student._id)} sx={{color: '#7760A4'}} size="small">Delete</Button>}
                    
                     
                   </CardActions>

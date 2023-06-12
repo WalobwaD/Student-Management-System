@@ -6,7 +6,7 @@ export const UserProvider = ({children})=>{
     const [username, setUserName] = useState('')
     const [email, setEmail] = useState('')
     const [token, setToken] = useState('')
-    const [isMonitor, setIsMonitor] = useState(false)
+    const [isMonitor, setIsMonitor] = useState()
 
     useEffect(()=>{
         setEmail(localStorage.getItem('email'))
