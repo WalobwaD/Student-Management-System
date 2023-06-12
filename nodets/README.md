@@ -6,7 +6,7 @@
 - Built using Node.ts and Express and deployed on Render. The backend is connected to a MongoDB database and includes
   important middlewares for the admin and class monitors registered in the application that was to be implemented which are: 
   - The admin && monitor can view all the students in the database and can also view the profile of each student. 
-  - The admin && monitor can also update and delete the student data.
+  - The admin && monitor can also update and suspend/delete the student data.
   - Students who are not admins or class monitors can only view other student's profiles and their profiles.
 
 - Link to deployed api.
