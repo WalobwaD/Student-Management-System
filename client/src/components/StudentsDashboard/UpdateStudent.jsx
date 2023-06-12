@@ -24,15 +24,15 @@ const defaultTheme = createTheme();
 
 
 const UpdateStudent = ()=>{
-    const {token} = useContext(UserContext)
-    const [name, setName] = useState('')
-    const [email, setEmail] = useState('')
-    const [password, setPassword] = useState('')
-    const [monitor, setMonitor] = useState(false)
-    const [lastName, setlastName] = useState('')
-    const [description, setDescription] = useState('')
-    const [level, setLevel] = useState(0)
     const student= useLocation().state
+    const {token} = useContext(UserContext)
+    const [name, setName] = useState(student.name)
+    const [email, setEmail] = useState(student.email)
+    const [password, setPassword] = useState(student.password)
+    const [monitor, setMonitor] = useState(student.monitor)
+    const [lastName, setlastName] = useState(student.lastName)
+    const [description, setDescription] = useState(student.description)
+    const [level, setLevel] = useState(student.level)
 
   const handleSubmit = async (e, id)=>{
       e.preventDefault()
@@ -91,7 +91,6 @@ const UpdateStudent = ()=>{
                   required
                   fullWidth
                   id="name"
-                  value={student.name}
                   label="First Name"
                   onChange={(e)=>setName(e.target.value)}
                   autoFocus
@@ -106,7 +105,6 @@ const UpdateStudent = ()=>{
                   }}
                   id="lastName"
                   label="Last Name"
-                  value={student.lastName}
                   name="lastName"
                   onChange={(e)=>setlastName(e.target.value)}
                   autoComplete="family-name"
@@ -120,7 +118,6 @@ const UpdateStudent = ()=>{
                     '& .MuiOutlinedInput-root': { '& fieldset': { borderColor: '#7760A4' } },
                   }}
                   fullWidth
-                  value={student.email}
                   id="email"
                   label="Email Address"
                   name="email"
@@ -135,7 +132,6 @@ const UpdateStudent = ()=>{
                   sx={{
                     '& .MuiOutlinedInput-root': { '& fieldset': { borderColor: '#7760A4' } },
                   }}
-                  value={student.description}
                   id="description"
                   label="Descriprtion"
                   name="email"
@@ -151,7 +147,6 @@ const UpdateStudent = ()=>{
                     '& .MuiOutlinedInput-root': { '& fieldset': { borderColor: '#7760A4' } },
                   }}
                   id="level"
-                  value={student.level}
                   label="level"
                   name="level"
                   type='number'
@@ -183,7 +178,7 @@ const UpdateStudent = ()=>{
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
             >
-              Add 
+              Update
             </Button>
           </Box>
         </Box>
