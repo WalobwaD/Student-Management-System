@@ -29,14 +29,14 @@ const UpdateStudent = ()=>{
     const [name, setName] = useState(student.name)
     const [email, setEmail] = useState(student.email)
     const [password, setPassword] = useState(student.password)
-    const [monitor, setMonitor] = useState(student.monitor)
+    const [monitor, setMonitor] = useState(false)
     const [lastName, setlastName] = useState(student.lastName)
     const [description, setDescription] = useState(student.description)
     const [level, setLevel] = useState(student.level)
 
-  const handleSubmit = async (e, id)=>{
+  const handleSubmit = async (e)=>{
       e.preventDefault()
-      const response = await fetch(`https://student-management-system-1rxu.onrender.com/students/update/${id}`, {
+      const response = await fetch(`https://student-management-system-1rxu.onrender.com/students/update/${student._id}`, {
         method: 'PATCH',
         headers: {
           'Content-Type': 'application/json',
@@ -53,6 +53,7 @@ const UpdateStudent = ()=>{
         })
       })
       const data = await response.json()
+      console.log(data)
       if (data.status === 'success') {
           console.log('success')
           window.location.href = '/students'
@@ -78,7 +79,7 @@ const UpdateStudent = ()=>{
           <Typography component="h1" variant="h5">
             Update {name} {lastName}'s profile
           </Typography>
-          <Box component="form" noValidate onSubmit={handleSubmit(student._id)} sx={{ mt: 3 }}>
+          <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
             <Grid container spacing={2}>
               <Grid item xs={12} sm={6}>
                 <TextField
