@@ -37,7 +37,7 @@ const updateStudent = async (req: express.Request, res: express.Response)=>{
 
         const updatedStudent = await updateStudentById(id, values)
 
-        return res.json({status: 'success', updateStudent}).end()
+        return res.json({status: 'success', updatedStudent}).end()
 
 
         
