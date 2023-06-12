@@ -13,9 +13,11 @@ const NavBar = ()=>{
             {email 
             ?
                 <nav className={styles.navContainer}>
-                    <div className={styles.navLogo}>
+                    <Link
+                        to='/'
+                        className={styles.navLogo}>
                         <img src={Logo}/>
-                    </div>
+                    </Link>
                     <div className={styles.navLinks}>
                         <Link to="/">Home</Link>
                         <Link to="/students">Class DashBoard</Link>
@@ -30,9 +32,11 @@ const NavBar = ()=>{
                 </nav>
             :
                 <nav className={styles.navContainer}>
-                    <div className={styles.navLogo}>
+                    <Link
+                        to='/'
+                        className={styles.navLogo}>
                         <img src={Logo}/>
-                    </div>
+                    </Link>
                     <div className={styles.navLinks}>
                         <Link to="/">Home</Link>
                         <Link to="/login">Login</Link>
