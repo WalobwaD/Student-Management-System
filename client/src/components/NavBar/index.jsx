@@ -18,7 +18,7 @@ const NavBar = ()=>{
                     </div>
                     <div className={styles.navLinks}>
                         <Link to="/">Home</Link>
-                        <Link to="/students' DashBoard">Class DashBoard</Link>
+                        <Link to="/students">Class DashBoard</Link>
                     </div>
                     <div className={styles.user}>
                         <div className={styles.icon}>

@@ -23,7 +23,7 @@ const router = createBrowserRouter([
     element: <RegisterPage/>
   },
   {
-    path: '/students\' DashBoard',
+    path: '/students',
     element: <StudentDashBoard/>
   },
   {
