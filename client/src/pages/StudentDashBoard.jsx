@@ -12,9 +12,7 @@ const StudentDashBoard = ()=>{
     return (
         <>
             <NavBar/>
-            {email ? <StudentsList/> : navigate("/login") }
-            <Footer/>
-            
+            {email ? <StudentsList/> : navigate("/login") }            
         </>
 
 

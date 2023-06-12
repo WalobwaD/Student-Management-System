@@ -32,7 +32,7 @@ export default function Album({students}) {
 
       })
       const data = await response.json()
-      window.location.href = '/students\' DashBoard'
+      window.location.href = '/students'
   }
 
 
