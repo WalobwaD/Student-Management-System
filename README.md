@@ -26,6 +26,8 @@
 - Frontend Instructions:
   - <a href="./client/README.md">Frontend Installation guide</a>
 
+- The API endpoints are deployed and tested using Postman, the frontend is yet to be perfected and will be updated soon.
+
 <h2>Future Enhacements</h2>
 
 - Application security on the Frontend
